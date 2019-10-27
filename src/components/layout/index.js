@@ -12,6 +12,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from '@components/header'
 import '@components/layout/layout.css'
+import '@components/layout/icons.css';
 import MaxWidth from '@styles/maxWidth'
 
 const Footer = styled.footer`
@@ -27,15 +28,15 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <Fragment>
       <Header siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
-      <Footer>
+      {/* <Footer>
         <MaxWidth>Footer</MaxWidth>
-      </Footer>
+      </Footer> */}
     </Fragment>
   )
 }
