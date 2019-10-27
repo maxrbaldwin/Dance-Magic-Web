@@ -40,6 +40,16 @@ module.exports = {
           '@styles': './styles',
         }
       }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          'PT Serif',
+          'Merriweather\:400',
+        ],
+        display: 'swap'
+      }
     }
   ],
 }
