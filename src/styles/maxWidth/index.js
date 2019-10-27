@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const MaxWidth = styled.div`
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1080px;
   padding: 1.0875rem 1.45rem;
 `;
 
