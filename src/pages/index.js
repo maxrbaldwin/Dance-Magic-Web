@@ -15,16 +15,17 @@ import {
   InfoImg,
   infoSection,
   InfoParagraph,
+  InfoHeader
 } from "@styles/infoContainer"
 
-const heroImage =
-  "https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/1538704_581048025299842_1940666397_n.jpg?_nc_cat=110&_nc_oc=AQlzmOEjLTi49VXeX82YptzM6w3zq6jYtzHHQcDd9_Kvg-X_Pa6DFHtz2biJZak1fH8&_nc_ht=scontent-atl3-1.xx&oh=2e2f7ed03d1d9d633c03616f654e81fa&oe=5DDAA6CF"
-// const contactImage = 'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/25354050_1739777139426919_3416904173659625501_n.jpg?_nc_cat=104&_nc_oc=AQmzHhN0YCLqan3v3pDI5Aqa0TU9OiCYrAOJu06bMGHcDUK9E25AbdsqITTfh_VvUdg&_nc_ht=scontent-atl3-1.xx&oh=b0897d3281c881885a451a821d6b6901&oe=5DCF44CA';
-const contactGIF = "https://media.giphy.com/media/l0CLTZ4kNSCq2eZpe/giphy.gif"
-const competitiveImage =
-  "https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/66836357_2846907752047180_5970592230405046272_n.jpg?_nc_cat=101&_nc_oc=AQkpRCPaEHQnmJfRND9T_bQsijG11OoN3sQ9z-ovfgFTm6O3t96sU43gvb0bizS8cfo&_nc_ht=scontent-atl3-1.xx&oh=ee275108e9132f7b032161e954834031&oe=5DD4506D"
-const serviceImage =
-  "https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/22450023_1662051810532786_3558782095292139727_n.jpg?_nc_cat=108&_nc_oc=AQn8diqDoQQPc-Kzz-AumJVShqRO7nyWlX6MoJt7aihIthlBMdiAnAMDc-78DI2ivTk&_nc_ht=scontent-atl3-1.xx&oh=9c537689bff097c221b03cf673b2d4aa&oe=5DD28CDE"
+const heroImage = "https://storage.cloud.google.com/dance-magic-images/home/hero.jpg?authuser=1"
+const contactGIF = "https://storage.cloud.google.com/dance-magic-images/home/classes.gif?authuser=1"
+const competitiveImage = "https://storage.cloud.google.com/dance-magic-images/home/comp.jpg?authuser=1"
+const serviceImage = "https://storage.cloud.google.com/dance-magic-images/home/charity.jpg?authuser=1"
+
+const sarah = "https://storage.cloud.google.com/dance-magic-images/thumbs/sarah_thumb.jpg?authuser=1"
+const nick = "https://storage.cloud.google.com/dance-magic-images/thumbs/nick_thumb.jpg?authuser=1"
+const donna = "https://storage.cloud.google.com/dance-magic-images/thumbs/donna_thumb.jpg?authuser=1"
 
 const ContactInfo = styled.section`
   ${infoSection}
@@ -33,7 +34,7 @@ const ContactInfo = styled.section`
 const UserQuotes = styled.section`
   ${infoSection}
   background-color: #f4b8da;
-  height: 40vh;
+  height: ${({ theme }) => theme.viewport === 'small' ? 'auto' : '40vh'};
   padding-bottom: 50px;
   min-height: 450px;
 `
@@ -49,6 +50,7 @@ const Quote = styled.div`
 const QuoteColumn = styled.div``
 const QuoteText = styled.p`
   text-align: center;
+  font-size: 16px;
 `
 const QuoteRow = styled.div`
   display: flex;
@@ -71,7 +73,7 @@ const QuoteBottom = styled.div(({ theme }) =>
     : {}
 )
 const QuoteIcon = styled.div`
-  background-image: url("https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-1/p320x320/41951408_2119602044741450_8058945229689978880_n.jpg?_nc_cat=105&_nc_oc=AQn6gTdO55OyZtylsUqcazaZhLDCkRWGwHhkmcljFRWCHN62Wfts1ZOhUfYCX4uYbrk&_nc_ht=scontent-atl3-1.xx&oh=1f967708fa11850a847f0daf175da772&oe=5DD0D224");
+  background-image: ${props => `url(${props.src})`} ;
   background-position: center;
   background-size: cover;
   height: 50px;
@@ -87,11 +89,12 @@ const CompetitionInfo = styled.section`
 const ServiceInfo = styled.section`
   ${infoSection}
   background-color: #f4b8da;
+  border-bottom: 0px;
 `
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Dance Magic | Hammonton, New Jersey" />
     <Fragment>
       <HeroContainer img={heroImage}>
         <HeroOverlay />
@@ -109,18 +112,11 @@ const IndexPage = () => (
             <InfoImg img={`${contactGIF}`} />
           </InfoItem>
           <InfoItem>
-            <h2>Classes for All Ages</h2>
+            <InfoHeader left={true}>Classes for All Ages</InfoHeader>
             <InfoText>
-              <InfoParagraph>Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.</InfoParagraph>
+              <InfoParagraph>
+              Dance Magic offers daily after school dance classes for ages 4 to 18 in a wide range of different genres, <b>tap</b>, <b>jazz</b>, <b>ballet</b>, <b>hip hop</b> and <b>modern</b>. Dance magic hosts two dance recitals a year. One in December and one in June. At these recitals students perform the routines they learn over the course of the dance semesters.
+              </InfoParagraph>
             </InfoText>
             <ContactButton />
           </InfoItem>
@@ -141,9 +137,9 @@ const IndexPage = () => (
               <QuoteBottom>
                 <QuoteRow>
                   <QuoteItem>
-                    <QuoteIcon />
+                    <QuoteIcon src={sarah} />
                   </QuoteItem>
-                  <QuoteItem>- Max Baldwin</QuoteItem>
+                  <QuoteItem>- Sarah Garvey Jansen</QuoteItem>
                 </QuoteRow>
               </QuoteBottom>
             </QuoteColumn>
@@ -158,9 +154,9 @@ const IndexPage = () => (
               <QuoteBottom>
                 <QuoteRow>
                   <QuoteItem>
-                    <QuoteIcon />
+                    <QuoteIcon src={nick} />
                   </QuoteItem>
-                  <QuoteItem>- Max Baldwin</QuoteItem>
+                  <QuoteItem>- Nick Goblirsch</QuoteItem>
                 </QuoteRow>
               </QuoteBottom>
             </QuoteColumn>
@@ -176,9 +172,9 @@ const IndexPage = () => (
               <QuoteBottom>
                 <QuoteRow>
                   <QuoteItem>
-                    <QuoteIcon />
+                    <QuoteIcon src={donna} />
                   </QuoteItem>
-                  <QuoteItem>- Max Baldwin</QuoteItem>
+                  <QuoteItem>- Donna Mazza Walters</QuoteItem>
                 </QuoteRow>
               </QuoteBottom>
             </QuoteColumn>
@@ -188,18 +184,9 @@ const IndexPage = () => (
       <CompetitionInfo>
         <InfoContainer>
           <InfoItem>
-            <h2>Competitive Dance Oppurtunities</h2>
+            <InfoHeader>Competitive Dance Oppurtunities</InfoHeader>
             <InfoText>
-            <InfoParagraph>Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.</InfoParagraph>
+            <InfoParagraph>Dance Magic offers opportunities for students to participate in the award winning Dance Magic Company Dance Group. The Company Dance Group competes at dance competitions all over the east coast, New Jersey, Pennsylvania, Maryland, Florida. Students have even had the opportunity to Dance in the Disney World Magic Kingdom Light Parade. </InfoParagraph>
             </InfoText>
           </InfoItem>
           <InfoItem>
@@ -213,18 +200,9 @@ const IndexPage = () => (
             <InfoImg img={`${serviceImage}`} />
           </InfoItem>
           <InfoItem>
-            <h2>More Than Just A Dance Studio</h2>
+            <InfoHeader left={true}>More Than Just A Dance Studio</InfoHeader>
             <InfoText>
-              <InfoParagraph>Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.</InfoParagraph>
+              <InfoParagraph>Dance Magic is more than just a Dance studio. It is a community that is committed to helping students grow as dancers and as a person. At Dance Magic students will have opportunities to participate in a wide range of different community events, parades and raise money for local charities. </InfoParagraph>
             </InfoText>
           </InfoItem>
         </InfoContainer>
