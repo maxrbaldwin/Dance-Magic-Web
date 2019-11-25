@@ -14,13 +14,13 @@ export const infoSection = css`
   width: 100%;
   height: ${({ theme }) => theme.viewport === 'large' ? '60vh' : 'auto'};
   min-height: 600px;
-  max-height: 800px;
+  max-height: ${({ theme }) => theme.viewport === 'small' ? 'auto' : '800px'};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-bottom: 5px solid #fff;
-  padding: ${({ theme }) => theme.viewport === 'large' ? '0px' : '60px 40px'};
+  padding: ${({ theme }) => theme.viewport === 'large' ? '0px' : '60px 0px'};
   text-align: ${({ theme }) => theme.viewport === 'large' ? 'left' : 'center'};
 `
 export const InfoImg = styled.div`
@@ -47,4 +47,8 @@ export const InfoText = styled.div`
 
 export const InfoParagraph = styled.p`
   font-size: 16px;
+`;
+
+export const InfoHeader = styled.h2`
+  padding-top: ${({ theme, left }) => left === true && theme.viewport === 'small' ? '20px' : 'auto'}
 `;
