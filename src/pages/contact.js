@@ -1,6 +1,7 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import FontAwesome from 'react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhone, faMapMarkerAlt } from '@fortawesome/fontawesome-free-solid'
 
 import withThemeProvider from "@components/withThemeProvider"
 import { withTheme } from "styled-components"
@@ -12,8 +13,8 @@ import MaxWidth from "@styles/maxWidth"
 
 const ContactContainer = styled.div`
   background-color: #f4b8da;
-  height: 100vh;
   width: 100%;
+  height: ${({ theme }) => (theme.viewport === "large" ? "100vh" : "auto")}};
 `
 
 const ContactRow = styled.div`
@@ -36,6 +37,7 @@ const ContactItemLeft = styled.div`
 const ContactItemRight = styled.div`
   ${ContactItem}
   width: ${({ viewport }) => (viewport === "large" ? "40%" : "auto")};
+  text-align: ${({ viewport }) => viewport === "small" ? "center" : "auto"};
 `
 const ContactInfoColumn = styled.div`
   display: flex;
@@ -71,11 +73,15 @@ const ContactListItemStyles = css`
 `
 const ContactListItem = styled.div`
   ${ContactInfoItemStyles}
+  ${ContactListItemStyles}
 `
 const Map = styled.iframe`
   ${ContactInfoItemStyles}
   width: 100%;
   height: 300px;
+`
+const Icon = styled.span`
+  padding-right: 10px;
 `
 
 const defaultHeader = "Get In Touch Today"
@@ -86,33 +92,34 @@ const Contact = props => {
   const { viewport } = props.theme
   return (
     <Layout>
-      <SEO title="Page two" />
+      <SEO title="Contact | Dance Magic | Hammonton, New Jersey" />
       <ContactContainer>
         <MaxWidth>
           <ContactRow viewport={viewport}>
             <ContactItemLeft viewport={viewport}>
               <ContactInfoHeader>
                 <HeaderText>{defaultHeader}</HeaderText>
+                <ContactInfoText>Reach out today and we will get back to you ASAP</ContactInfoText>
               </ContactInfoHeader>
               <ContactForm />
             </ContactItemLeft>
             <ContactItemRight viewport={viewport}>
+              <ContactInfoHeader>
+                <HeaderText>Contact Information</HeaderText>
+              </ContactInfoHeader>
               <ContactInfoColumn>
                 <ContactInfoItem>
                   <ContactList>
                     <ContactListItem>
-                    <FontAwesome name="map-marker-alt" size="2x" />
-                      <p>
-                        609-561-1414
-                      </p>
+                      <p><Icon><FontAwesomeIcon icon={faPhone} /></Icon> 609-561-1414</p>
                     </ContactListItem>
                     <ContactListItem>
-                      Address: 750 S White Horse Pike, Hammonton, NJ 08037
+                      <p><Icon><FontAwesomeIcon icon={faMapMarkerAlt} /></Icon> 750 S White Horse Pike<br/>Hammonton, NJ 08037</p>
                     </ContactListItem>
+                    {/* <ContactListItem>
+                      <Map src={mapSrc} />
+                    </ContactListItem> */}
                   </ContactList>
-                </ContactInfoItem>
-                <ContactInfoItem>
-                  <Map src={mapSrc} />
                 </ContactInfoItem>
               </ContactInfoColumn>
             </ContactItemRight>
