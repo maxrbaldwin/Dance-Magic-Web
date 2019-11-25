@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 const Button = styled.button`
-  padding: 10px 20px;
+  padding: ${({ theme }) => theme.viewport === 'small' ? '10px 30px' : '10px 20px'};
   background-color: black;
   font-family: 'PT Serif';
-  width: 30%;
+  width: ${({ theme }) => theme.viewport === 'small' ? 'auto' : '30%'};
   align-self: center;
   border: 2px solid #fff;
+  font-size: ${({ theme }) => theme.viewport === 'small' ? '20px' : '20px'};
 `;
 
 const ButtonItemAnchor = styled(props => <Link {...props} />)`

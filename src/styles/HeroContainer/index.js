@@ -30,14 +30,15 @@ export const HeroOverlay = styled.div`
   left: 0;
   right: 0;
   z-index: 1;
-  background-color: rgba(0,0,0,.7);
+  background-color: rgba(0,0,0,.4);
 `;
 
 export const HeroHeader = styled.h2`
-  font-size: 60px;
+  font-size: ${({ theme }) => theme.viewport === 'small' ? '40px' : '60px'};
   color: #fff;
 `;
 
 export const HeroText = styled.p`
+  font-size: ${({ theme }) => theme.viewport === 'small' ? '16px' : 'auto'};
   color: #fff;
 `;
