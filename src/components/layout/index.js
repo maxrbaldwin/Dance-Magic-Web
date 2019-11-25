@@ -12,11 +12,13 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from '@components/header'
 import '@components/layout/layout.css'
-import '@components/layout/icons.css';
 import MaxWidth from '@styles/maxWidth'
 
 const Footer = styled.footer`
-  background-color: #ff80ff;
+  background-color: #e68bbe;
+  text-align: center;
+  font-size: 14px;
+  border-top: 5px solid #fff;
 `;
 
 const Layout = ({ children }) => {
@@ -34,9 +36,9 @@ const Layout = ({ children }) => {
     <Fragment>
       <Header siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
-      {/* <Footer>
-        <MaxWidth>Footer</MaxWidth>
-      </Footer> */}
+      <Footer>
+        <MaxWidth>609-561-1414 | 750 S White Horse Pike, Hammonton, NJ, 08037</MaxWidth>
+      </Footer>
     </Fragment>
   )
 }

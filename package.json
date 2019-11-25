@@ -5,6 +5,11 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-brands-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
     "axios": "^0.19.0",
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.13.67",
@@ -21,7 +26,6 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-fontawesome": "^1.6.1",
     "react-helmet": "^5.2.1",
     "styled-components": "^4.3.2"
   },
