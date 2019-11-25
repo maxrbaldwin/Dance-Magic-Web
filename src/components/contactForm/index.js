@@ -2,6 +2,7 @@ import React, { useState, Fragment } from "react"
 import styled, { withTheme, css } from "styled-components"
 import axios from "axios"
 
+const messageDuration = 5000;
 const url = "http://localhost:9000/api/contact"
 const mockData = {
   name: "max baldwin",
@@ -68,11 +69,23 @@ const UserMessage = styled.div`
   top: 0;
   left: 0;
   right: 0;
+  text-align: center;
+  padding: 25px 0px;
+  background-color: #e68bbe;
+  border-bottom: 5px solid #fff;
+  transition-timing-function: ease-out;
+  transition: 0.25s;
+  transform: translateY(-100%);
+  ${props => props.toggle && css`
+    transition-timing-function: ease-in;
+    transition: 0.2s;
+    transform: translateY(0%);
+  `}
 `
 
 const ContactForm = props => {
   const [contact, setContact] = useState(defaultState);
-  const [userMessage, setUserMessage] = useState("");
+  const [userMessage, setUserMessage] = useState(defaultResponse.data.error.message);
   const [showUserMessage, setShowUserMessage] = useState(false);
 
   const handleRequest = async data => {
@@ -103,17 +116,28 @@ const ContactForm = props => {
     setContact({ ...contact, ...newValue })
   }
 
+  const validateContact = ({ name, phone, email, message }) => {
+    return {
+      name,
+      phone: phone.length === 0 ? undefined : phone,
+      email,
+      message,
+    }
+  }
+
   const setShowMessageTimer = () => {
     const duration = 5000;
     setTimeout(() => {
+      console.log('time!')
       setShowUserMessage(false);
     }, duration);
   }
 
   const onClick = async e => {
     e.preventDefault()
-
-    const { data } = await handleRequest(contact);
+    
+    const validContact = validateContact(contact);
+    const { data } = await handleRequest(validContact);
 
     if (data.error) {
       setUserMessage(data.error.message);
@@ -127,47 +151,47 @@ const ContactForm = props => {
   
   return (
     <Fragment>
-      {showUserMessage && <UserMessage>{userMessage}</UserMessage>}
-          <form>
-            <InputWrapperTop>
-              <Label htmlFor="name">Name</Label>
-              <Input
-                placeholder="Miss Dawn"
-                name="name"
-                type="text"
-                onChange={onChange}
-              ></Input>
-            </InputWrapperTop>
-            <InputWrapper>
-              <Label htmlFor="email">Email</Label>
-              <Input
-                placeholder="example@example.com"
-                name="email"
-                type="email"
-                onChange={onChange}
-              ></Input>
-            </InputWrapper>
-            <InputWrapper>
-              <Label htmlFor="phone">Phone <Format>(Optional)</Format></Label>
-              <Input
-                placeholder="6095611414"
-                name="phone"
-                type="phone"
-                onChange={onChange}
-              ></Input>
-            </InputWrapper>
-            <InputWrapper>
-              <Label htmlFor="message">Message</Label>
-              <TextArea
-                placeholder="What would you like to say?"
-                name="message"
-                onChange={onChange}
-              ></TextArea>
-            </InputWrapper>
-            <InputWrapper>
-              <SubmitButton name="submit" type="submit" onClick={onClick}></SubmitButton>
-            </InputWrapper>
-          </form>
+      <UserMessage toggle={showUserMessage}>{userMessage}</UserMessage>
+      <form>
+        <InputWrapperTop>
+          <Label htmlFor="name">Name</Label>
+          <Input
+            placeholder="Miss Dawn"
+            name="name"
+            type="text"
+            onChange={onChange}
+          ></Input>
+        </InputWrapperTop>
+        <InputWrapper>
+          <Label htmlFor="email">Email</Label>
+          <Input
+            placeholder="example@example.com"
+            name="email"
+            type="email"
+            onChange={onChange}
+          ></Input>
+        </InputWrapper>
+        <InputWrapper>
+          <Label htmlFor="phone">Phone <Format>(Optional)</Format></Label>
+          <Input
+            placeholder="6095611414"
+            name="phone"
+            type="phone"
+            onChange={onChange}
+          ></Input>
+        </InputWrapper>
+        <InputWrapper>
+          <Label htmlFor="message">Message</Label>
+          <TextArea
+            placeholder="What would you like to say?"
+            name="message"
+            onChange={onChange}
+          ></TextArea>
+        </InputWrapper>
+        <InputWrapper>
+          <SubmitButton name="submit" type="submit" onClick={onClick}></SubmitButton>
+        </InputWrapper>
+      </form>
     </Fragment>
   )
 }
