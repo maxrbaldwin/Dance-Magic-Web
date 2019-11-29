@@ -3,14 +3,8 @@ import styled, { withTheme, css } from "styled-components"
 import axios from "axios"
 
 const messageDuration = 5000;
+const defaultSuccessMessage = "Thank you for your submission. We've sent you a follow up email."
 const url = "http://localhost:9000/api/contact"
-const mockData = {
-  name: "max baldwin",
-  email: "maxrbaldwin2328@gmail.com",
-  phone: "6093855472",
-  message: "asdfasdfqwerqwerqwerqwersdgfadfgsdgfsdfgsadf",
-}
-
 const defaultResponse = {
   data: {
     error: {
@@ -126,11 +120,10 @@ const ContactForm = props => {
   }
 
   const setShowMessageTimer = () => {
-    const duration = 5000;
     setTimeout(() => {
       console.log('time!')
       setShowUserMessage(false);
-    }, duration);
+    }, messageDuration);
   }
 
   const onClick = async e => {
@@ -142,7 +135,7 @@ const ContactForm = props => {
     if (data.error) {
       setUserMessage(data.error.message);
     } else {
-      setUserMessage('Thank you for your submission');
+      setUserMessage(defaultSuccessMessage);
     }
     
     setShowUserMessage(true);
