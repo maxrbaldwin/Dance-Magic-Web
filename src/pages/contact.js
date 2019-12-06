@@ -15,6 +15,9 @@ const ContactContainer = styled.div`
   background-color: #f4b8da;
   width: 100%;
   height: ${({ theme }) => (theme.viewport === "large" ? "100vh" : "auto")}};
+  @media only screen and (max-width: 1500px) {
+    height: auto;
+  }
 `
 
 const ContactRow = styled.div`
