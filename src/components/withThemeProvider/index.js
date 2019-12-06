@@ -1,4 +1,4 @@
-import React, { createContext } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider } from "styled-components"
 
@@ -12,6 +12,7 @@ const getViewport = () => {
   } else {
     localViewport = "large"
   }
+
   return localViewport
 }
 
