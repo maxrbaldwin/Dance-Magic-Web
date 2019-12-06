@@ -59,7 +59,8 @@ const SubmitButton = styled.input`
   padding: 10px 0px;
 `
 const UserMessage = styled.div`
-  position: absolute;
+  z-index: 1;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
