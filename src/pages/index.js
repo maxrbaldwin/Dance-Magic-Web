@@ -202,7 +202,7 @@ const IndexPage = () => (
           <InfoItem>
             <InfoHeader left={true}>More Than Just A Dance Studio</InfoHeader>
             <InfoText>
-              <InfoParagraph>Dance Magic is more than just a Dance studio. It is a community that is committed to helping students grow as dancers and as a person. At Dance Magic students will have opportunities to participate in a wide range of different community events, parades and raise money for local charities. </InfoParagraph>
+              <InfoParagraph>Dance Magic is more than just a Dance studio. It is a community that is committed to helping students grow as dancers and as people. At Dance Magic students will have opportunities to participate in a wide range of different community events, parades and raise money for local charities. </InfoParagraph>
             </InfoText>
           </InfoItem>
         </InfoContainer>
