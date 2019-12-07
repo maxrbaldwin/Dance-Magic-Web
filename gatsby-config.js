@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Dance Magic`,
+    title: `Dance Magic, Hammonton New Jersey`,
     description: `Dance Magic, Hammonton New Jersey, Dance Studio`,
     author: `@maxrbaldwin`,
   },
