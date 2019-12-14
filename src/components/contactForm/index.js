@@ -1,10 +1,14 @@
-import React, { useState, Fragment } from "react"
+import React, { useState, useEffect, Fragment } from "react"
 import styled, { withTheme, css } from "styled-components"
+import isVerified from "@utils/recaptcha"
+import getHost from "@utils/getHost"
 import axios from "axios"
-
-const messageDuration = 5000;
+// user message
+const messageDuration = 8000;
 const defaultSuccessMessage = "Thank you for your submission. We've sent you a follow up email."
-const url = "http://localhost:9000/api/contact"
+const defaultInvalidUserMessage = 'We apologize for the inconvenience, but your account was flagged as spam. If you are not a bot please reach out on Facebook'
+// http with server
+const url = `${getHost()}/api/contact`
 const defaultResponse = {
   data: {
     error: {
@@ -52,11 +56,14 @@ const TextArea = styled.textarea`
   ${InputStyles}
   min-height: 300px;
 `
-const SubmitButton = styled.input`
-  ${InputStyles}
+const SubmitButtonStyles = css`
   background-color: #e68bbe;
   border: 3px solid #fff;
   padding: 10px 0px;
+`
+const SubmitButton = styled.input`
+  ${InputStyles}
+  ${SubmitButtonStyles}
 `
 const UserMessage = styled.div`
   z-index: 1;
@@ -79,33 +86,41 @@ const UserMessage = styled.div`
 `
 
 const ContactForm = props => {
-  const [contact, setContact] = useState(defaultState);
-  const [userMessage, setUserMessage] = useState(defaultResponse.data.error.message);
-  const [showUserMessage, setShowUserMessage] = useState(false);
+  const [contact, setContact] = useState(defaultState)
+  const [userMessage, setUserMessage] = useState(defaultResponse.data.error.message)
+  const [shouldShowUserMessage, setShowUserMessage] = useState(false)
+  const [isVerifiedUser, setIsVerifiedUser ] = useState(true)
+  // immediatley
+  useEffect(() => {
+    async function fetchVerifiedUser() {
+      try {
+        const isOk = await isVerified()
+        setIsVerifiedUser(isOk)
+      } catch (err) {
+        console.log('error verifying user: ', err);
+      }
+    }
+    fetchVerifiedUser()
+  }, [])
 
   const handleRequest = async data => {
     let response = defaultResponse;
 
     try {
-      await axios({
+      const res = await axios({
         method: "POST",
         url,
         data,
       })
-        .then(res => {
-          response = res
-        })
-        .catch(err => {
-          response = err.message === 'Network Error' ? defaultResponse : err.response;
-        })
+      response = res.data
     } catch (err) {
-      console.log('err: ', err);
+      response = err.message === 'Network Error' ? defaultResponse : err.response;
     }
 
     return response
   }
 
-  const onChange = e => {
+  const onInputChange = e => {
     const { target } = e
     const newValue = { [target.name]: target.value }
     setContact({ ...contact, ...newValue })
@@ -122,30 +137,42 @@ const ContactForm = props => {
 
   const setShowMessageTimer = () => {
     setTimeout(() => {
-      console.log('time!')
       setShowUserMessage(false);
     }, messageDuration);
   }
 
-  const onClick = async e => {
+  const showUserMessage = () => {
+    setShowUserMessage(true)
+    setShowMessageTimer()
+  }
+
+
+  const handleInvalidUser = e => {
+    e.preventDefault();
+
+    setUserMessage(defaultInvalidUserMessage);
+    showUserMessage();
+  }
+
+  const handleValidUser = async e => {
+    let response;
     e.preventDefault()
     
     const validContact = validateContact(contact);
-    const { data } = await handleRequest(validContact);
-
-    if (data.error) {
-      setUserMessage(data.error.message);
-    } else {
-      setUserMessage(defaultSuccessMessage);
+    try {
+      response = await handleRequest(validContact);
+    } catch(err) {
+      console.log('err in handle request: ', err);
     }
+    const message = response.data && response.data.error ? response.data.error.message : defaultSuccessMessage
     
-    setShowUserMessage(true);
-    setShowMessageTimer();
+    setUserMessage(message);
+    showUserMessage();
   }
   
   return (
     <Fragment>
-      <UserMessage toggle={showUserMessage}>{userMessage}</UserMessage>
+      <UserMessage toggle={shouldShowUserMessage}>{userMessage}</UserMessage>
       <form>
         <InputWrapperTop>
           <Label htmlFor="name">Name</Label>
@@ -153,7 +180,7 @@ const ContactForm = props => {
             placeholder="Miss Dawn"
             name="name"
             type="text"
-            onChange={onChange}
+            onChange={onInputChange}
           ></Input>
         </InputWrapperTop>
         <InputWrapper>
@@ -162,7 +189,7 @@ const ContactForm = props => {
             placeholder="example@example.com"
             name="email"
             type="email"
-            onChange={onChange}
+            onChange={onInputChange}
           ></Input>
         </InputWrapper>
         <InputWrapper>
@@ -171,7 +198,7 @@ const ContactForm = props => {
             placeholder="6095611414"
             name="phone"
             type="phone"
-            onChange={onChange}
+            onChange={onInputChange}
           ></Input>
         </InputWrapper>
         <InputWrapper>
@@ -179,11 +206,11 @@ const ContactForm = props => {
           <TextArea
             placeholder="What would you like to say?"
             name="message"
-            onChange={onChange}
+            onChange={onInputChange}
           ></TextArea>
         </InputWrapper>
         <InputWrapper>
-          <SubmitButton name="submit" type="submit" onClick={onClick}></SubmitButton>
+          <SubmitButton name="submit" type="submit" onClick={isVerifiedUser ? handleValidUser : handleInvalidUser} />
         </InputWrapper>
       </form>
     </Fragment>
