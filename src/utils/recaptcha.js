@@ -1,6 +1,7 @@
 import axios from "axios"
+import getHost from "@utils/getHost"
 
-const url = 'http://localhost:9000/api/recaptcha'
+const url = `${getHost()}/api/recaptcha`
 
 const defaultResponse = {
   data: {
@@ -59,9 +60,6 @@ const isUserVerified = async action => {
       console.log('error verifying recaptcha token: ', verificationErr)
     }
   }
-  // if we get a valid or invalid user response return that response
-  // else return true because it means the recaptcha verify was not successful
-  console.log('is: ', isVerified)
   return isVerified && isVerified.isValidUser;
 }
 
