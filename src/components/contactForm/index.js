@@ -1,28 +1,24 @@
 import React, { useState, useEffect, Fragment } from "react"
 import styled, { withTheme, css } from "styled-components"
-import isVerified from "@utils/recaptcha"
+import fetchRecaptchaToken from "@utils/recaptcha"
 import getHost from "@utils/getHost"
 import axios from "axios"
+
+// http with server
+const url = `${getHost()}/api/contact`
+
 // user message
 const messageDuration = 8000;
 const defaultSuccessMessage = "Thank you for your submission. We've sent you a follow up email."
+const defaultResponse = 'Contact not avaiable at this time. Please reach out on Facebook'
 const defaultInvalidUserMessage = 'We apologize for the inconvenience, but your account was flagged as spam. If you are not a bot please reach out on Facebook'
-// http with server
-const url = `${getHost()}/api/contact`
-const defaultResponse = {
+const serverError = {
   data: {
-    error: {
-      message: 'Contact not avaiable at this time. Please reach out on Facebook'
-    }
+    code: 0,
+    message: defaultResponse,
   }
 }
 
-const defaultState = {
-  name: "",
-  email: "",
-  phone: "",
-  message: "",
-}
 const InputWrapperStyles = css`
   width: 100%;
 `
@@ -85,39 +81,43 @@ const UserMessage = styled.div`
   `}
 `
 
+const defaultState = {
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+}
+
 const ContactForm = props => {
   const [contact, setContact] = useState(defaultState)
-  const [userMessage, setUserMessage] = useState(defaultResponse.data.error.message)
+  const [userMessage, setUserMessage] = useState(defaultResponse)
   const [shouldShowUserMessage, setShowUserMessage] = useState(false)
-  const [isVerifiedUser, setIsVerifiedUser ] = useState(true)
-  // immediatley
-  useEffect(() => {
-    async function fetchVerifiedUser() {
-      try {
-        const isOk = await isVerified()
-        setIsVerifiedUser(isOk)
-      } catch (err) {
-        console.log('error verifying user: ', err);
-      }
-    }
-    fetchVerifiedUser()
-  }, [])
 
-  const handleRequest = async data => {
+  const handleRequest = async requestData => {
     let response = defaultResponse;
+    let token = null;
+
+    try {
+      token = await fetchRecaptchaToken()
+    } catch (tokenErr) {
+      console.log('error fetching recaptcha token: ', tokenErr)
+    }
 
     try {
       const res = await axios({
         method: "POST",
         url,
-        data,
+        data: {
+          ...requestData,
+          token,
+        }
       })
       response = res.data
     } catch (err) {
-      response = err.message === 'Network Error' ? defaultResponse : err.response;
+      console.log('err: ', err);
+      response = err.message === 'Network Error' ? serverError : err.response;
     }
-
-    return response
+    return response && response.data
   }
 
   const onInputChange = e => {
@@ -146,15 +146,20 @@ const ContactForm = props => {
     setShowMessageTimer()
   }
 
-
-  const handleInvalidUser = e => {
-    e.preventDefault();
-
-    setUserMessage(defaultInvalidUserMessage);
-    showUserMessage();
+  const getUserMessage = response => {
+    const { code, message } = response
+    const messages = {
+      3: message,
+      10: defaultInvalidUserMessage,
+      11: defaultInvalidUserMessage,
+      12: defaultInvalidUserMessage,
+      13: defaultInvalidUserMessage,
+      14: defaultSuccessMessage,
+    }
+    return messages[code] || defaultResponse
   }
 
-  const handleValidUser = async e => {
+  const handleContactForm = async e => {
     let response;
     e.preventDefault()
     
@@ -164,7 +169,8 @@ const ContactForm = props => {
     } catch(err) {
       console.log('err in handle request: ', err);
     }
-    const message = response.data && response.data.error ? response.data.error.message : defaultSuccessMessage
+    
+    const message = getUserMessage(response)
     
     setUserMessage(message);
     showUserMessage();
@@ -210,7 +216,7 @@ const ContactForm = props => {
           ></TextArea>
         </InputWrapper>
         <InputWrapper>
-          <SubmitButton name="submit" type="submit" onClick={isVerifiedUser ? handleValidUser : handleInvalidUser} />
+          <SubmitButton name="submit" type="submit" onClick={handleContactForm} />
         </InputWrapper>
       </form>
     </Fragment>
