@@ -42,7 +42,7 @@
     "build": "NODE_ENV=production npm run create-env && gatsby build",
     "dev": "NODE_ENV=dev npm run create-env && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run serve",
+    "start": "NODE_ENV=production npm run serve",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
