@@ -1,3 +1,10 @@
+/*** HIDE RECAPTCHA ***/
+.grecaptcha-badge {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
 /*** FONTS ***/
 body, a, p, li, label, input {
   font-family: 'Merriweather';

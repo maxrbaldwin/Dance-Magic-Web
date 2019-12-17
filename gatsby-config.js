@@ -38,6 +38,7 @@ module.exports = {
         aliases: {
           '@components': './components',
           '@styles': './styles',
+          '@utils': './utils'
         }
       }
     },
