@@ -6,11 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimesCircle } from '@fortawesome/fontawesome-free-solid'
 
 import MaxWidth from "@styles/maxWidth"
+import padding from "@styles/padding"
 
 const HeaderContainer = styled.header`
   width: 100%;
   background-color: #e68bbe;
   border-bottom: 5px solid #fff;
+  ${padding}
 `
 const SiteTitle = styled.h1`
   color: white;
