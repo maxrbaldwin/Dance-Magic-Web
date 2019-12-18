@@ -38,13 +38,14 @@
   ],
   "license": "MIT",
   "scripts": {
-    "create-env": "node tools/env.js",
     "build": "NODE_ENV=production npm run create-env && gatsby build",
     "dev": "NODE_ENV=dev npm run create-env && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "NODE_ENV=production npm run serve",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "decrypt-env": "gcloud kms decrypt --key=secrets --keyring=env-web --plaintext-file=.env.development --ciphertext-file=env/.env.encrypted --location=us-east1",
+    "encrypt-env": "gcloud kms encrypt --key=secrets --keyring=env-web --plaintext-file=env/.env --ciphertext-file=env/.env.encrypted --location=us-east1"
   },
   "repository": {
     "type": "git",
