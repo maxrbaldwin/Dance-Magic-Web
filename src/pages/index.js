@@ -7,7 +7,7 @@ import SEO from "@components/seo"
 import ContactButton from "@components/contactButton"
 
 import MaxWidth from "@styles/maxWidth"
-import { HeroContainer, HeroOverlay, HeroItem, HeroHeader, HeroText } from "@styles/heroContainer"
+import { HeroContainer, HeroOverlay, HeroItem, HeroHeader, HeroText } from "@styles/HeroContainer"
 import {
   InfoContainer,
   InfoItem,
@@ -16,7 +16,7 @@ import {
   infoSection,
   InfoParagraph,
   InfoHeader
-} from "@styles/infoContainer"
+} from "@styles/InfoContainer"
 
 const heroImage = "https://storage.cloud.google.com/dance-magic-images/home/hero.jpg?authuser=1"
 const contactGIF = "https://storage.cloud.google.com/dance-magic-images/home/classes.gif?authuser=1"
