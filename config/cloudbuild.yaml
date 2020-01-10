@@ -1,0 +1,10 @@
+# install node modules
+steps:
+- name: 'gcr.io/cloud-builders/npm:node-10.10.0'
+  args: ['install']
+# run tests
+- name: 'gcr.io/cloud-builders/npm:node-10.10.0'
+  args: ['run', 'build']
+# deploy
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', 'app.yaml']
