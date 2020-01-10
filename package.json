@@ -13,7 +13,7 @@
     "@google-cloud/datastore": "^5.0.1",
     "axios": "^0.19.0",
     "babel-plugin-styled-components": "^1.10.6",
-    "dance-magic": "github:maxrbaldwin/Dance-Magic-Shared",
+    "dance-magic": "git+https://0bf8c2dc1387a25c63ba20737d148ae1638f0682:x-oauth-basic@github.com/maxrbaldwin/Dance-Magic-Shared",
     "gatsby": "^2.13.67",
     "gatsby-image": "^2.2.8",
     "gatsby-plugin-google-fonts": "^1.0.1",
