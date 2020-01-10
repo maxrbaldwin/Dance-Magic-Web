@@ -5,6 +5,10 @@ import { ThemeProvider } from "styled-components"
 const getViewport = () => {
   let localViewport
 
+  if (!window) {
+    return "large"
+  }
+
   if (window.matchMedia("(max-width: 700px)").matches) {
     localViewport = "small"
   } else if (window.matchMedia("(max-width: 900px)").matches) {
