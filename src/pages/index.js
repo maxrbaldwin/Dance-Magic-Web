@@ -25,7 +25,7 @@ const serviceImage = "https://storage.cloud.google.com/dance-magic-images/home/c
 
 const sarah = "https://storage.cloud.google.com/dance-magic-images/thumbs/sarah_thumb.jpg?authuser=1"
 const nick = "https://storage.cloud.google.com/dance-magic-images/thumbs/nick_thumb.jpg?authuser=1"
-const donna = "https://storage.cloud.google.com/dance-magic-images/thumbs/donna_thumb.jpg?authuser=1"
+const bill = "https://storage.cloud.google.com/dance-magic-images/thumbs/bill_thumb.jpg"
 
 const ContactInfo = styled.section`
   ${infoSection}
@@ -164,17 +164,16 @@ const IndexPage = () => (
           <Quote>
             <QuoteColumn>
               <QuoteText>
-                Love the owner, teachers are very friendly. There recital they
-                put on at the end of year is very professional.
+                Price is fair. Teachers are wonderful. My daughter loves it there
               </QuoteText>
             </QuoteColumn>
             <QuoteColumn>
               <QuoteBottom>
                 <QuoteRow>
                   <QuoteItem>
-                    <QuoteIcon src={donna} />
+                    <QuoteIcon src={bill} />
                   </QuoteItem>
-                  <QuoteItem>- Donna Mazza Walters</QuoteItem>
+                  <QuoteItem>-Bob Mills</QuoteItem>
                 </QuoteRow>
               </QuoteBottom>
             </QuoteColumn>
