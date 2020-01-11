@@ -1,13 +1,9 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider } from "styled-components"
 
 const getViewport = () => {
   let localViewport
-
-  if (!window) {
-    return "large"
-  }
 
   if (window.matchMedia("(max-width: 700px)").matches) {
     localViewport = "small"
@@ -21,17 +17,16 @@ const getViewport = () => {
 }
 
 function withThemeProvider(WrappedComponent) {
-  const theme = {
-    viewport: getViewport(),
-  }
-  return class extends React.Component {
-    render() {
-      return (
-        <ThemeProvider theme={theme}>
-          <WrappedComponent />
-        </ThemeProvider>
-      )
-    }
+  return () => {
+    const [theme, setTheme] = useState({})
+    useEffect(() => {
+      setTheme({ viewport: getViewport()})
+    }, [])
+    return (
+      <ThemeProvider theme={theme}>
+        <WrappedComponent />
+      </ThemeProvider>
+    )
   }
 }
 
