@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "dance-magic-web",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Dance Magic Web application",
+  "version": "1.0.0",
+  "author": "maxrbaldwin",
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
@@ -34,7 +34,6 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
   "scripts": {
     "create-env": "node tools/env.js",
     "create-env-dev": "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS/dmc.json node tools/env.js",
@@ -42,13 +41,13 @@
     "dev": "NODE_ENV=dev npm run create-env-dev && ./node_modules/.bin/gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "NODE_ENV=production npm run serve",
-    "serve": "./node_modules/.bin/gatsby serve"
+    "serve": "./node_modules/.bin/gatsby serve --port $PORT"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/maxrbaldwin/Dance-Magic-Web"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/maxrbaldwin/Dance-Magic-Web/issues"
   }
 }
