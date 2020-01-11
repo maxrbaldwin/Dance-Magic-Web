@@ -163,7 +163,7 @@ const MobileHeader = () => {
   )
 }
 
-const Header = props => props.theme.viewport === 'small' ? <MobileHeader {...props} /> : <DesktopHeader {...props} />;
+const Header = props => props.theme && props.theme.viewport === 'small' ? <MobileHeader {...props} /> : <DesktopHeader {...props} />;
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
