@@ -1,7 +1,4 @@
 steps:
-# try and raise timeout
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['config', 'set', 'app/cloud_build_timeout', 1200]
 # install
 - name: 'gcr.io/cloud-builders/npm:node-10.10.0'
   args: ['install']
@@ -11,3 +8,4 @@ steps:
 # deploy
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy', 'app.yaml']
+timeout: 1200
