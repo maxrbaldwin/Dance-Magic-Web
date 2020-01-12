@@ -3,9 +3,9 @@ env: flex
 runtime: nodejs
 handlers:
 - url: /
-  static_files: www/public/index.html
-  upload: www/public/index.html
+  static_files: public/index.html
+  upload: public/index.html
 
 - url: /(.*)
-  static_files: www/public/\1
-  upload: www/public/(.*)
+  static_files: public/\1
+  upload: public/(.*)
