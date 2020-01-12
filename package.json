@@ -45,7 +45,7 @@
     "dev": "NODE_ENV=dev npm run create-env-dev && ./node_modules/.bin/gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "NODE_ENV=production npm run serve",
-    "serve": "./node_modules/.bin/gatsby serve --port $PORT"
+    "serve": "./node_modules/.bin/gatsby serve --port $PORT --host 0.0.0.0"
   },
   "repository": {
     "type": "git",
