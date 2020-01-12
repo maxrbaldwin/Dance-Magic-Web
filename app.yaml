@@ -1,10 +1,3 @@
 service: default
 env: flex
 runtime: nodejs
-handlers:
-- url: /
-  static_files: public/index.html
-  upload: public/index.html
-
-- url: /
-  static_dir: build
