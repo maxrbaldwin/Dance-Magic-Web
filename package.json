@@ -4,6 +4,10 @@
   "description": "Dance Magic Web application",
   "version": "1.0.0",
   "author": "maxrbaldwin",
+  "engines": {
+    "node": "^8.13.0 || >=10.10.0",
+    "npm": ">=6"
+  },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
