@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useState } from "react"
+import React, { useState, Fragment } from "react"
 import styled, { withTheme, css } from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimesCircle } from '@fortawesome/fontawesome-free-solid'
@@ -8,6 +8,18 @@ import { faBars, faTimesCircle } from '@fortawesome/fontawesome-free-solid'
 import MaxWidth from "@styles/maxWidth"
 import padding from "@styles/padding"
 
+const MobileWrapper = styled.div`
+  display: none;
+  @media (max-width: 700px) {
+    display: block;
+  }
+`
+const DesktopHeaderWrapper = styled.div`
+  display: block;
+  @media (max-width: 700px) {
+    display: none;
+  }
+`
 const HeaderContainer = styled.header`
   width: 100%;
   background-color: #e68bbe;
@@ -23,9 +35,12 @@ const SiteTitle = styled.h1`
 `
 const HeaderRow = styled.div`
   display: flex;
-  flex-direction: ${({ theme }) =>
-    theme.viewport === "large" ? "row" : "column"};
+  flex-direction: row;
   align-items: center;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `
 const NavBar = styled.nav``
 const NavList = styled.ul`
@@ -37,6 +52,7 @@ const NavItem = styled.li`
   display: inline-block;
   padding: 0px 20px;
   margin: 10px 0 0 0;
+  font-size: 22px;
 `
 const LinkStyles = css`
   font-family: 'Merriweather';
@@ -57,7 +73,7 @@ const MobileRow = styled.div`
   position: relative;
 `
 const MobileFlex = styled.div`
-  flex-grow: 2;
+  flex-grow: 1;
 `
 const Hamburger = styled.div`
   flex-grow: 1;
@@ -89,31 +105,33 @@ const MobileNavItem = styled.div`
 const facebookUrl = 'https://www.facebook.com/Dance-Magic-424482520956394/';
 
 const DesktopHeader = () => (
-  <HeaderContainer>
-    <MaxWidth>
-      <HeaderRow>
-        <SiteTitle>
-          <NavItemLink to="/">Dance Magic</NavItemLink>
-        </SiteTitle>
-        <NavBar>
-          <NavList>
-            <NavItem>
-              <NavItemLink to="/">Home</NavItemLink>
-            </NavItem>
-            {/* <NavItem>
-              <NavItemLink to="/about">About</NavItemLink>
-            </NavItem> */}
-            <NavItem>
-              <NavItemLink to="/contact">Contact</NavItemLink>
-            </NavItem>
-            <NavItem>
-              <NavItemAnchor href={facebookUrl} target="_blank">Join us on Facebook</NavItemAnchor>
-            </NavItem>
-          </NavList>
-        </NavBar>
-      </HeaderRow>
-    </MaxWidth>
-  </HeaderContainer>
+  <DesktopHeaderWrapper>
+    <HeaderContainer>
+      <MaxWidth>
+        <HeaderRow>
+          <SiteTitle>
+            <NavItemLink to="/">Dance Magic</NavItemLink>
+          </SiteTitle>
+          <NavBar>
+            <NavList>
+              <NavItem>
+                <NavItemLink to="/">Home</NavItemLink>
+              </NavItem>
+              {/* <NavItem>
+                <NavItemLink to="/about">About</NavItemLink>
+              </NavItem> */}
+              <NavItem>
+                <NavItemLink to="/contact">Contact</NavItemLink>
+              </NavItem>
+              <NavItem>
+                <NavItemAnchor href={facebookUrl} target="_blank">Join us on Facebook</NavItemAnchor>
+              </NavItem>
+            </NavList>
+          </NavBar>
+        </HeaderRow>
+      </MaxWidth>
+    </HeaderContainer>
+  </DesktopHeaderWrapper>
 )
 
 const iconSize = '2x'
@@ -130,40 +148,47 @@ const MobileHeader = () => {
   }
 
   return (
-    <HeaderContainer>
-      <MaxWidth>
-        <MobileNavOverlay hidden={isOverlayHidden}>
-          <CloseIcon onClick={onCloseClick}>
-            <FontAwesomeIcon size={iconSize} icon={faTimesCircle} />
-          </CloseIcon>
-          <MobileNav>
-            <MobileNavItem>
-              <NavItemLink to="/">Home</NavItemLink>
-            </MobileNavItem>
-            <MobileNavItem>
-              <NavItemLink to="/contact">Contact</NavItemLink>
-            </MobileNavItem>
-            <MobileNavItem>
-              <NavItemAnchor href={facebookUrl} target="_blank">Join us on Facebook</NavItemAnchor>
-            </MobileNavItem>
-          </MobileNav>
-        </MobileNavOverlay>
-        <MobileRow>
-          <Hamburger onClick={onHamburgerClick}>
-            <FontAwesomeIcon size={iconSize} icon={faBars} />
-          </Hamburger>
-          <MobileFlex>
-            <SiteTitle>
-              <NavItemLink to="/">Dance Magic</NavItemLink>
-            </SiteTitle>
-          </MobileFlex>
-        </MobileRow>
-      </MaxWidth>
-    </HeaderContainer>
+    <MobileWrapper>
+      <HeaderContainer>
+        <MaxWidth>
+          <MobileNavOverlay hidden={isOverlayHidden}>
+            <CloseIcon onClick={onCloseClick}>
+              <FontAwesomeIcon size={iconSize} icon={faTimesCircle} />
+            </CloseIcon>
+            <MobileNav>
+              <MobileNavItem>
+                <NavItemLink to="/">Home</NavItemLink>
+              </MobileNavItem>
+              <MobileNavItem>
+                <NavItemLink to="/contact">Contact</NavItemLink>
+              </MobileNavItem>
+              <MobileNavItem>
+                <NavItemAnchor href={facebookUrl} target="_blank">Join us on Facebook</NavItemAnchor>
+              </MobileNavItem>
+            </MobileNav>
+          </MobileNavOverlay>
+          <MobileRow>
+            <Hamburger onClick={onHamburgerClick}>
+              <FontAwesomeIcon size={iconSize} icon={faBars} />
+            </Hamburger>
+            <MobileFlex>
+              <SiteTitle>
+                <NavItemLink to="/">Dance Magic</NavItemLink>
+              </SiteTitle>
+            </MobileFlex>
+          </MobileRow>
+        </MaxWidth>
+      </HeaderContainer>
+    </MobileWrapper>
   )
 }
 
-const Header = props => props.theme && props.theme.viewport === 'small' ? <MobileHeader {...props} /> : <DesktopHeader {...props} />;
+const Header = props => (
+  <Fragment>
+    <MobileHeader {...props} />
+    <DesktopHeader {...props} />
+  </Fragment>
+)
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
