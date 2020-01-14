@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 
 const padding = css`
-  padding: 1.0875rem 1.45rem;
+  padding: 25px 20px;
 `
 
 export default padding
