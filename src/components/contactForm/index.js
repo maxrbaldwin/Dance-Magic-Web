@@ -1,11 +1,14 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, Fragment } from "react"
 import styled, { css } from "styled-components"
+import { HeroOverlay } from "@styles/HeroContainer"
 import fetchRecaptchaToken from "@utils/recaptcha"
 import getHost from "@utils/getHost"
 import axios from "axios"
 
 // http with server
 const url = `${getHost()}/api/contact`
+
+const loadingImg = "https://storage.cloud.google.com/dance-magic-images/dancer.gif?authuser=1";
 
 // user message
 const messageDuration = 8000;
@@ -66,13 +69,13 @@ const SubmitButton = styled.input`
   ${SubmitButtonStyles}
 `
 const UserMessage = styled.div`
+  padding: 35px 20px;
   z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   text-align: center;
-  padding: 25px 0px;
   background-color: #e68bbe;
   border-bottom: 5px solid #fff;
   transition-timing-function: ease-out;
@@ -84,6 +87,16 @@ const UserMessage = styled.div`
     transform: translateY(0%);
   `}
 `
+const LoadingGif = styled.img`
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+`
 
 const defaultState = {
   name: "",
@@ -94,6 +107,7 @@ const defaultState = {
 
 const ContactForm = props => {
   const [contact, setContact] = useState(defaultState)
+  const [isLoading, setIsLoading] = useState(false)
   const [userMessage, setUserMessage] = useState(defaultResponse)
   const [shouldShowUserMessage, setShowUserMessage] = useState(false)
 
@@ -146,6 +160,7 @@ const ContactForm = props => {
   }
 
   const showUserMessage = () => {
+    setIsLoading(false)
     setShowUserMessage(true)
     setShowMessageTimer()
   }
@@ -166,6 +181,7 @@ const ContactForm = props => {
   const handleContactForm = async e => {
     let response;
     e.preventDefault()
+    setIsLoading(true)
     
     const validContact = validateContact(contact);
     try {
@@ -183,6 +199,11 @@ const ContactForm = props => {
   return (
     <Fragment>
       <UserMessage toggle={shouldShowUserMessage}>{userMessage}</UserMessage>
+      {isLoading &&
+        <HeroOverlay>
+          <LoadingGif src={loadingImg}/>
+        </HeroOverlay>
+      }
       <form>
         <InputWrapperTop>
           <Label htmlFor="name">Name</Label>
