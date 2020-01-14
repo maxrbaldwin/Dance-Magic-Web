@@ -4,32 +4,48 @@ import fullScreen from '@styles/fullScreen';
 
 export const InfoContainer = styled.div`
   display: flex;
-  flex-direction: ${({ theme }) => theme.viewport === 'large' ? 'row' : 'column'};
+  flex-direction: row;
   flex-wrap: nowrap;
   max-width: 1280px;
-  width: ${({ theme }) => theme.viewport === 'large' ? 'auto' : '100%'};
+  width: auto;
   margin: 0px auto;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    width: 100%:
+  }
 `;
 export const infoSection = css`
   width: 100%;
-  height: ${({ theme }) => theme.viewport === 'large' ? '60vh' : 'auto'};
+  height: 60vh;
   min-height: 600px;
-  max-height: ${({ theme }) => theme.viewport === 'small' ? 'auto' : '800px'};
+  max-height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-bottom: 5px solid #fff;
-  padding: ${({ theme }) => theme.viewport === 'large' ? '0px' : '60px 0px'};
-  text-align: ${({ theme }) => theme.viewport === 'large' ? 'left' : 'center'};
+  padding: 0px;
+  text-align: left;
+
+  @media (max-width: 700px) {
+    height: auto;
+    max-height: none;
+    padding: 60px 0px;
+    text-align: center;
+  }
 `
 export const InfoImg = styled.div`
   background-image: ${({ img }) => `url(${img})`};
   background-position: center;
   background-size: cover;
-  width: ${({ theme }) => theme.viewport === 'large' ? '600px' : '100%'};
+  width: 600px;
   height: 400px;
   border: 5px solid #fff;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 export const InfoItem = styled.div`
   text-align: center;
@@ -46,9 +62,14 @@ export const InfoText = styled.div`
 `;
 
 export const InfoParagraph = styled.p`
-  font-size: 16px;
+  font-size: 20px;
+  line-height: 35px;
 `;
 
 export const InfoHeader = styled.h2`
-  padding-top: ${({ theme, left }) => left === true && theme.viewport === 'small' ? '20px' : 'auto'}
+  font-size: 32px;
+  
+  @media (max-width: 700px) {
+    padding-top: ${({ left }) => left ? '40px' : 'auto'};
+  }
 `;

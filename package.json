@@ -40,7 +40,7 @@
   ],
   "scripts": {
     "create-env": "node tools/env.js",
-    "create-env-dev": "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS/dmc.json node tools/env.js",
+    "create-env-dev": "GOOGLE_APPLICATION_CREDENTIALS=./creds/dmc.json node tools/env.js",
     "build": "NODE_ENV=production npm run create-env && ./node_modules/.bin/gatsby build",
     "dev": "NODE_ENV=dev npm run create-env-dev && ./node_modules/.bin/gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
