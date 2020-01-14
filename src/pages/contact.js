@@ -3,8 +3,6 @@ import styled, { css } from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faMapMarkerAlt } from '@fortawesome/fontawesome-free-solid'
 
-import withThemeProvider from "@components/withThemeProvider"
-import { withTheme } from "styled-components"
 import Layout from "@components/layout"
 import SEO from "@components/seo"
 import ContactForm from "@components/contactForm"
@@ -107,46 +105,43 @@ const defaultHeader = "Get In Touch Today"
 const mapSrc =
   "https://www.google.com/maps/d/u/1/embed?mid=1JrcjxOMyRbbmDRnP9ncv9JrFQmHRANFk"
 
-const Contact = props => {
-  const { viewport } = props.theme
-  return (
-    <Layout>
-      <SEO title="Contact | Dance Magic | Hammonton, New Jersey" />
-      <ContactContainer>
-        <MaxWidth>
-          <ContactRow viewport={viewport}>
-            <ContactItemLeft viewport={viewport}>
-              <ContactInfoHeader>
-                <HeaderText>{defaultHeader}</HeaderText>
-                <ContactInfoText>Reach out today and we will get back to you ASAP</ContactInfoText>
-              </ContactInfoHeader>
-              <ContactForm />
-            </ContactItemLeft>
-            <ContactItemRight viewport={viewport}>
-              <ContactInfoHeader>
-                <HeaderText>Contact Information</HeaderText>
-              </ContactInfoHeader>
-              <ContactInfoColumn>
-                <ContactInfoItem>
-                  <ContactList>
-                    <ContactListItem>
-                      <p><Icon><FontAwesomeIcon icon={faPhone} /></Icon> 609-561-1414</p>
-                    </ContactListItem>
-                    <ContactListItem>
-                      <p><Icon><FontAwesomeIcon icon={faMapMarkerAlt} /></Icon> 750 S White Horse Pike<br/>Hammonton, NJ 08037</p>
-                    </ContactListItem>
-                    {/* <ContactListItem>
-                      <Map src={mapSrc} />
-                    </ContactListItem> */}
-                  </ContactList>
-                </ContactInfoItem>
-              </ContactInfoColumn>
-            </ContactItemRight>
-          </ContactRow>
-        </MaxWidth>
-      </ContactContainer>
-    </Layout>
-  )
-}
+const Contact = props => (
+  <Layout>
+    <SEO title="Contact | Dance Magic | Hammonton, New Jersey" />
+    <ContactContainer>
+      <MaxWidth>
+        <ContactRow>
+          <ContactItemLeft>
+            <ContactInfoHeader>
+              <HeaderText>{defaultHeader}</HeaderText>
+              <ContactInfoText>Reach out today and we will get back to you ASAP</ContactInfoText>
+            </ContactInfoHeader>
+            <ContactForm />
+          </ContactItemLeft>
+          <ContactItemRight>
+            <ContactInfoHeader>
+              <HeaderText>Contact Information</HeaderText>
+            </ContactInfoHeader>
+            <ContactInfoColumn>
+              <ContactInfoItem>
+                <ContactList>
+                  <ContactListItem>
+                    <p><Icon><FontAwesomeIcon icon={faPhone} /></Icon> 609-561-1414</p>
+                  </ContactListItem>
+                  <ContactListItem>
+                    <p><Icon><FontAwesomeIcon icon={faMapMarkerAlt} /></Icon> 750 S White Horse Pike<br/>Hammonton, NJ 08037</p>
+                  </ContactListItem>
+                  {/* <ContactListItem>
+                    <Map src={mapSrc} />
+                  </ContactListItem> */}
+                </ContactList>
+              </ContactInfoItem>
+            </ContactInfoColumn>
+          </ContactItemRight>
+        </ContactRow>
+      </MaxWidth>
+    </ContactContainer>
+  </Layout>
+)
 
-export default withThemeProvider(withTheme(Contact))
+export default Contact
