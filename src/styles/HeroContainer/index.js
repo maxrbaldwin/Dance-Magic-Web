@@ -34,11 +34,17 @@ export const HeroOverlay = styled.div`
 `;
 
 export const HeroHeader = styled.h2`
-  font-size: ${({ theme }) => theme.viewport === 'small' ? '40px' : '60px'};
+  font-size: 60px;
   color: #fff;
+  @media (max-width: 700px) {
+    font-size: 40px;
+  }
 `;
 
 export const HeroText = styled.p`
-  font-size: ${({ theme }) => theme.viewport === 'small' ? '16px' : 'auto'};
+  font-size: 22px;
   color: #fff;
+  @media (max-width: 700px) {
+    font-size: 16px;
+  }
 `;
