@@ -7,11 +7,16 @@
 
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
+import styled from "styled-components"
 import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from '@components/header'
 import Footer from '@components/footer'
 import '@components/layout/layout.css'
+
+const LayoutWrapper = styled.div`
+  position: relative;
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,11 +30,11 @@ const Layout = ({ children }) => {
   `);
 
   return (
-    <Fragment>
+    <LayoutWrapper>
       <Header siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
       <Footer />
-    </Fragment>
+    </LayoutWrapper>
   )
 }
 
