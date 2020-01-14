@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react"
-import styled, { withTheme, css } from "styled-components"
+import styled, { css } from "styled-components"
 import fetchRecaptchaToken from "@utils/recaptcha"
 import getHost from "@utils/getHost"
 import axios from "axios"
@@ -42,8 +42,12 @@ const InputStyles = css`
   display: block;
   padding: 10px;
   border-radius: 3px;
-  width: ${({ theme }) => theme.viewport === 'large' ? '90%' : '100%'};
+  width: 90%;
   border: 0px;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `
 const Input = styled.input`
   ${InputStyles}
@@ -223,4 +227,4 @@ const ContactForm = props => {
   )
 }
 
-export default withTheme(ContactForm);
+export default ContactForm;
