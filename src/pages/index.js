@@ -1,7 +1,6 @@
 import React, { Fragment } from "react"
-import styled, { withTheme } from "styled-components"
+import styled from "styled-components"
 
-import withThemeProvider from "@components/withThemeProvider"
 import Layout from "@components/layout"
 import SEO from "@components/seo"
 import ContactButton from "@components/contactButton"
@@ -227,4 +226,4 @@ const IndexPage = () => (
   </Layout>
 );
 
-export default withThemeProvider(withTheme(IndexPage))
+export default IndexPage
