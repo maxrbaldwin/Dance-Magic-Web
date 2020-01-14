@@ -14,19 +14,26 @@ import MaxWidth from "@styles/maxWidth"
 const ContactContainer = styled.div`
   background-color: #f4b8da;
   width: 100%;
-  height: ${({ theme }) => (theme.viewport === "large" ? "100vh" : "auto")}};
   @media only screen and (max-width: 1500px) {
+    height: auto;
+  }
+
+  @media (max-width: 900px) {
     height: auto;
   }
 `
 
 const ContactRow = styled.div`
   display: flex;
-  flex-direction: ${({ viewport }) =>
-    viewport === "large" ? "row" : "column"};
+  flex-direction: row;
   align-items: stretch;
   justify-content: center;
   padding-top: 30px;
+  
+  @media (max-width: 700px) {
+    flex-direction: column;
+    margin: 0px 40px;
+  }
 `
 
 const ContactItem = css`
@@ -35,12 +42,21 @@ const ContactItem = css`
 
 const ContactItemLeft = styled.div`
   ${ContactItem}
-  width: ${({ viewport }) => (viewport === "large" ? "60%" : "auto")};
+  width: 60%;
+
+  @media (max-width: 700px) {
+    width: auto;
+  }
 `
 const ContactItemRight = styled.div`
   ${ContactItem}
-  width: ${({ viewport }) => (viewport === "large" ? "40%" : "auto")};
-  text-align: ${({ viewport }) => viewport === "small" ? "center" : "auto"};
+  width: 40%;
+  text-align: left;
+
+  @media (max-width: 700px) {
+    width: auto;
+    text-align: center;
+  }
 `
 const ContactInfoColumn = styled.div`
   display: flex;
