@@ -25,7 +25,7 @@ const serviceImage = "https://storage.cloud.google.com/dance-magic-images/home/c
 
 const sarah = "https://storage.cloud.google.com/dance-magic-images/thumbs/sarah_thumb.jpg?authuser=1"
 const nick = "https://storage.cloud.google.com/dance-magic-images/thumbs/nick_thumb.jpg?authuser=1"
-const bill = "https://storage.cloud.google.com/dance-magic-images/thumbs/bill_thumb.jpg"
+const bill = "https://storage.cloud.google.com/dance-magic-images/thumbs/bill_thumb.jpg?authuser=1"
 
 const ContactInfo = styled.section`
   ${infoSection}
@@ -34,53 +34,70 @@ const ContactInfo = styled.section`
 const UserQuotes = styled.section`
   ${infoSection}
   background-color: #f4b8da;
-  height: ${({ theme }) => theme.viewport === 'small' ? 'auto' : '40vh'};
-  padding-bottom: 50px;
-  min-height: 450px;
+  min-height: 500px;
+
+  @media (max-width: 700px) {
+    height: auto;
+  }
 `
 const Quote = styled.div`
-  width: ${({ theme }) => theme.viewport === "large" ? "33.33333333%" : "auto"};
+  width: 33.33333333%;
   display: flex;
   flex-direction: column;
   position: relative;
-  margin: ${({ theme }) =>
-    theme.viewport === "large" ? "0px 40px" : "20px 40px"};
+  margin: 40px 40px 0px 40px;
   justify-content: center;
+
+  @media (max-width: 700px) {
+    width: auto;
+    margin: 40px;
+  }
 `
-const QuoteColumn = styled.div``
+const QuoteColumn = styled.div`
+  min-height: 60px;
+`
 const QuoteText = styled.p`
   text-align: center;
-  font-size: 16px;
+  font-size: 22px;
+  line-height: 35px;
 `
 const QuoteRow = styled.div`
   display: flex;
-  flex-direction: ${({ theme }) =>
-    theme.viewport === "large" ? "row" : "column"};
+  flex-direction: row;
   width: 90%;
   justify-content: center;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `
 const QuoteItem = styled.div`
   align-self: center;
+  font-size: 22px;
 `
-const QuoteBottom = styled.div(({ theme }) =>
-  theme.viewport === "large"
-    ? {
-        position: "absolute",
-        bottom: "-50px",
-        left: "0px",
-        right: "0px",
-      }
-    : {}
-)
+const QuoteBottom = styled.div`
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+
+  @media (max-width: 700px) {
+    position: static;
+    bottom: 0px;
+  }
+`
 const QuoteIcon = styled.div`
   background-image: ${props => `url(${props.src})`} ;
   background-position: center;
   background-size: cover;
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   border-radius: 100%;
-  margin: ${({ theme }) =>
-    theme.viewport === "large" ? "0 20px 0 0" : "auto"};
+  margin: 0 20px 0 0;
+  
+  @media (max-width: 700px) {
+    margin: 0px 0px 20px 0px;
+  }
 `
 const CompetitionInfo = styled.section`
   ${infoSection}
@@ -100,7 +117,7 @@ const IndexPage = () => (
         <HeroOverlay />
         <MaxWidth>
           <HeroItem>
-            <HeroHeader>36 years of Dance Achievement</HeroHeader>
+            <HeroHeader>36 Years of Dance Achievement</HeroHeader>
             <HeroText>Join an award winning dance community</HeroText>
             <ContactButton />
           </HeroItem>
@@ -123,12 +140,12 @@ const IndexPage = () => (
         </InfoContainer>
       </ContactInfo>
       <UserQuotes>
-        <h2>Community Quotes</h2>
+        <InfoHeader>Community Quotes</InfoHeader>
         <QuoteRow>
           <Quote>
             <QuoteColumn>
               <QuoteText>
-                I wouldn't be where I am today without Dance Magic. I got an
+                I got an
                 incredible dance education thanks to Miss Dawn & the rest of the
                 incredible staff.
               </QuoteText>
