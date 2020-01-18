@@ -12,11 +12,11 @@ import MaxWidth from "@styles/maxWidth"
 const ContactContainer = styled.div`
   background-color: #f4b8da;
   width: 100%;
-  @media only screen and (max-width: 1500px) {
-    height: auto;
+  @media only screen and (max-width: 1920px) {
+    height: 100vh;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1080px) {
     height: auto;
   }
 `
@@ -26,7 +26,7 @@ const ContactRow = styled.div`
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
-  padding-top: 30px;
+  padding-top: 50px;
   
   @media (max-width: 700px) {
     flex-direction: column;
