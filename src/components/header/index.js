@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState, Fragment } from "react"
-import styled, { withTheme, css } from "styled-components"
+import styled, { css } from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimesCircle } from '@fortawesome/fontawesome-free-solid'
 
@@ -198,4 +198,4 @@ Header.defaultProps = {
   siteTitle: ``,
 }
 
-export default withTheme(Header)
+export default Header
