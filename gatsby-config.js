@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Dance Magic, Hammonton New Jersey`,
-    description: `Dance Magic, Hammonton New Jersey, Dance Studio`,
-    author: `@maxrbaldwin`,
+    title: `Dance Magic Dance Studio Hammonton New Jersey`,
+    description: `Dance Magic Dance Studio Hammonton New Jersey`,
+    author: `Dance Magic Dance Studio Hammonton New Jersey`,
+    keywords: `Dance Magic, Dance Studio Hammonton New Jersey, Dance Studio South Jersey, Dance Studio Berlin New Jersey, Dance Studio Atlantic City, Dance Studio Atco New Jersey, Dance Studio Mullica New Jersey`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
