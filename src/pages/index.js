@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "@components/layout"
@@ -108,7 +109,9 @@ const ServiceInfo = styled.section`
   border-bottom: 0px;
 `
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => {
+  console.log(data)
+  return (
   <Layout>
     <SEO title="Dance Magic | Hammonton, New Jersey" />
     <Fragment>
@@ -224,6 +227,26 @@ const IndexPage = () => (
       </ServiceInfo>
     </Fragment>
   </Layout>
-);
+)
+}
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    heroImage: file(relativePath: { eq: "home/home_hero.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1600, maxHeight: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    },
+    contactGif: file(relativePath: { eq: "home/home_classes.gif" }) {
+      childImageSharp {
+        fluid(maxWidth: 600, maxHeight: 400) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
