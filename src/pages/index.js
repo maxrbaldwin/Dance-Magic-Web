@@ -131,7 +131,7 @@ const IndexPage = () => (
             <InfoHeader left={true}>Classes for All Ages</InfoHeader>
             <InfoText>
               <InfoParagraph>
-              Dance Magic offers daily after school dance classes for ages 4 to 18 in a wide range of different genres, <b>tap</b>, <b>jazz</b>, <b>ballet</b>, <b>hip hop</b> and <b>modern</b>. Dance magic hosts two dance recitals a year. One in December and one in June. At these recitals students perform the routines they learn over the course of the dance semesters.
+              Dance Magic offers daily after school dance classes for ages 3 and up. Dance Magic offers a wide range of different dance disciplines - <b>tap</b>, <b>jazz</b>, <b>ballet</b>, <b>modern</b>, <b>pointe</b> and <b>hip hop</b>. Dance Magic also offers <b>adult classes</b>. At Dance Magic's annual dance recital students perform the routines they learn over the course of the dance semesters.
               </InfoParagraph>
             </InfoText>
             <ContactButton />
@@ -199,9 +199,9 @@ const IndexPage = () => (
       <CompetitionInfo>
         <InfoContainer>
           <InfoItem>
-            <InfoHeader>Competitive Dance Oppurtunities</InfoHeader>
+            <InfoHeader>Competitive Dance Opportunities</InfoHeader>
             <InfoText>
-            <InfoParagraph>Dance Magic offers opportunities for students to participate in the award winning Dance Magic Company Dance Group. The Company Dance Group competes at dance competitions all over the east coast, New Jersey, Pennsylvania, Maryland, Florida. Students have even had the opportunity to Dance in the Disney World Magic Kingdom Light Parade. </InfoParagraph>
+            <InfoParagraph>Dance Magic offers opportunities for students to participate in the award winning Dance Magic Dance Company and Competition Team. The Dance Magic Competition Team competes at dance competitions all over the east coast - New Jersey, Pennsylvania, Maryland and Florida. Dance Magic Company Students have had the opportunity to dance at the Disney World Magic Kingdom. </InfoParagraph>
             </InfoText>
           </InfoItem>
           <InfoItem>
