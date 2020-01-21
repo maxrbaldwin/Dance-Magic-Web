@@ -12,7 +12,7 @@ import MaxWidth from "@styles/maxWidth"
 const ContactContainer = styled.div`
   background-color: #f4b8da;
   width: 100%;
-  @media only screen and (max-width: 1920px) {
+  @media only screen and (min-width: 1900px) {
     height: 100vh;
   }
 

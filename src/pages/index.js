@@ -17,14 +17,14 @@ import {
   InfoHeader
 } from "@styles/InfoContainer"
 
-const heroImage = "https://storage.cloud.google.com/dance-magic-images/home/hero.jpg"
-const contactGIF = "https://storage.cloud.google.com/dance-magic-images/home/classes.gif"
-const competitiveImage = "https://storage.cloud.google.com/dance-magic-images/home/comp.jpg"
-const serviceImage = "https://storage.cloud.google.com/dance-magic-images/home/charity.jpg"
+const heroImage = "https://storage.googleapis.com/dance-magic-images/home/hero.jpg"
+const contactGIF = "https://storage.googleapis.com/dance-magic-images/home/classes.gif"
+const competitiveImage = "https://storage.googleapis.com/dance-magic-images/home/comp.jpg"
+const serviceImage = "https://storage.googleapis.com/dance-magic-images/home/charity.jpg"
 
-const sarah = "https://storage.cloud.google.com/dance-magic-images/thumbs/sarah_thumb.jpg"
-const nick = "https://storage.cloud.google.com/dance-magic-images/thumbs/nick_thumb.jpg"
-const bill = "https://storage.cloud.google.com/dance-magic-images/thumbs/bill_thumb.jpg"
+const sarah = "https://storage.googleapis.com/dance-magic-images/thumbs/sarah_thumb.jpg"
+const nick = "https://storage.googleapis.com/dance-magic-images/thumbs/nick_thumb.jpg"
+const bill = "https://storage.googleapis.com/dance-magic-images/thumbs/bill_thumb.jpg"
 
 const ContactInfo = styled.section`
   ${infoSection}
