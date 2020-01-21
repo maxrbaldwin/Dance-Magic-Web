@@ -31,6 +31,12 @@ module.exports = {
         ],
         display: 'swap'
       }
+    },
+    {
+      resolve: `gatsby-plugin-htaccess`,
+      options: {
+        https: true,
+      }
     }
   ],
 }
