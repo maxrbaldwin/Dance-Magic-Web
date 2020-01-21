@@ -8,7 +8,7 @@ import axios from "axios"
 // http with server
 const url = `${getHost()}/api/contact`
 
-const loadingImg = "https://storage.cloud.google.com/dance-magic-images/dancer.gif";
+const loadingImg = "https://storage.googleapis.com/dance-magic-images/dancer.gif";
 
 // user message
 const messageDuration = 8000;
