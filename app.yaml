@@ -1,6 +1,6 @@
 service: default
 env: standard
-runtime: nodejs
+runtime: nodejs10
 handlers:
 - url: /.*
   secure: always
