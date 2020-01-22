@@ -5,9 +5,7 @@ import fetchRecaptchaToken from "@utils/recaptcha"
 import getHost from "@utils/getHost"
 import axios from "axios"
 
-// http with server
-const url = `${getHost()}/api/contact`
-
+const host = getHost();
 const loadingImg = "https://storage.googleapis.com/dance-magic-images/dancer.gif";
 
 // user message
@@ -124,7 +122,8 @@ const ContactForm = props => {
     try {
       const res = await axios({
         method: "POST",
-        url,
+        url: '/api/contact',
+        baseURL: host,
         data: {
           ...requestData,
           token,
