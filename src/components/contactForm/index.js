@@ -121,6 +121,9 @@ const ContactForm = props => {
 
     try {
       const res = await axios({
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
         method: "POST",
         url: '/api/contact',
         baseURL: host,
