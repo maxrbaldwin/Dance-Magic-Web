@@ -6,7 +6,7 @@ import Layout from '@components/layout'
 import SEO from '@components/seo'
 
 const PolicyWrapper = styled.div` 
-  padding: 40px 0px;
+  padding: 40px;
 `
 const OrderedList = styled.ol`
   margin-left: 40px;
