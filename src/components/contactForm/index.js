@@ -11,7 +11,7 @@ const loadingImg = "https://storage.googleapis.com/dance-magic-images/dancer.gif
 // user message
 const messageDuration = 8000;
 const defaultSuccessMessage = "Thank you for your submission. We've sent you a follow up email."
-const defaultResponse = 'Contact not avaiable at this time. Please reach out on Facebook'
+const defaultResponse = 'Contact not available at this time. Please reach out on Facebook'
 const defaultInvalidUserMessage = 'We apologize for the inconvenience, but your account was flagged as spam. If you are not a bot please reach out on Facebook'
 const serverError = {
   data: {
