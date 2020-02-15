@@ -4,7 +4,7 @@ const fs = require('fs')
 const rootDir = '../';
 const isProduction = () => process.env.NODE_ENV === 'production';
 const isPrd = isProduction();
-const clientEnvVars = ['HOST', 'RECAPTCHA_CLIENT'];
+const clientEnvVars = ['API_HOST', 'RECAPTCHA_CLIENT'];
 
 async function main() {
   const env = isPrd ? 'production' : 'development';
