@@ -40,10 +40,8 @@
     "gatsby"
   ],
   "scripts": {
-    "create-env": "node tools/env.js",
-    "create-env-dev": "GOOGLE_APPLICATION_CREDENTIALS=./creds/dmc.json node tools/env.js",
-    "build": "NODE_ENV=production npm run create-env && ./node_modules/.bin/gatsby build",
-    "dev": "NODE_ENV=dev npm run create-env-dev && ./node_modules/.bin/gatsby develop",
+    "build": "NODE_ENV=production ./node_modules/.bin/gatsby build",
+    "dev": "./node_modules/.bin/gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "NODE_ENV=production npm run serve",
     "serve": "./node_modules/.bin/gatsby serve --port $PORT --host 0.0.0.0"
