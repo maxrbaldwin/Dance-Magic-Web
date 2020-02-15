@@ -102,8 +102,6 @@ const Icon = styled.span`
 `
 
 const defaultHeader = "Get In Touch Today"
-const mapSrc =
-  "https://www.google.com/maps/d/u/1/embed?mid=1JrcjxOMyRbbmDRnP9ncv9JrFQmHRANFk"
 
 const Contact = props => (
   <Layout>
