@@ -14,7 +14,6 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
-    "@google-cloud/datastore": "^5.0.1",
     "axios": "^0.19.0",
     "babel-plugin-styled-components": "^1.10.6",
     "dance-magic": "git+https://0bf8c2dc1387a25c63ba20737d148ae1638f0682:x-oauth-basic@github.com/maxrbaldwin/Dance-Magic-Shared",
