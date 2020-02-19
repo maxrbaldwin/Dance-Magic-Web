@@ -8,5 +8,13 @@
     ],
     "website": "https:/dancemagicnj.com/",
     "repository": "https://github.com/maxrbaldwin/Dance-Magic-Web",
-    "image": "heroku/nodejs"
+    "image": "heroku/nodejs",
+    "environments": {
+      "test": {
+        "scripts": {
+          "test-setup": "env",
+          "test": "npm run test"
+        }
+      }
+    }
   }
