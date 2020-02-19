@@ -1,0 +1,12 @@
+{
+    "name": "Dance Magic Web",
+    "description": "Dance Magic, Hammonton New Jersey, official website",
+    "keywords": [
+      "GatsbyJS",
+      "Node JS",
+      "Dance Magic"
+    ],
+    "website": "https:/dancemagicnj.com/",
+    "repository": "https://github.com/maxrbaldwin/Dance-Magic-Web",
+    "image": "heroku/nodejs"
+  }

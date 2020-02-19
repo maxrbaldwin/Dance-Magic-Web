@@ -14,7 +14,6 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
-    "@google-cloud/datastore": "^5.0.1",
     "axios": "^0.19.0",
     "babel-plugin-styled-components": "^1.10.6",
     "dance-magic": "git+https://0bf8c2dc1387a25c63ba20737d148ae1638f0682:x-oauth-basic@github.com/maxrbaldwin/Dance-Magic-Shared",
@@ -41,9 +40,8 @@
   ],
   "scripts": {
     "create-env": "node tools/env.js",
-    "create-env-dev": "GOOGLE_APPLICATION_CREDENTIALS=./creds/dmc.json node tools/env.js",
     "build": "NODE_ENV=production npm run create-env && ./node_modules/.bin/gatsby build",
-    "dev": "NODE_ENV=dev npm run create-env-dev && ./node_modules/.bin/gatsby develop",
+    "dev": "NODE_ENV=dev npm run create-env && ./node_modules/.bin/gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "NODE_ENV=production npm run serve",
     "serve": "./node_modules/.bin/gatsby serve --port $PORT --host 0.0.0.0"

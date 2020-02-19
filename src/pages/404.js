@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Layout from '@components/layout'
 import SEO from '@components/seo'
 
-const notFoundImageSource = 'https://storage.googleapis.com/dance-magic-images/404.gif'
+const notFoundImageSource = 'https://res.cloudinary.com/hyk1rhlzp/image/upload/v1581811370/dance-magic/404_tf47pz.gif'
 
 const NotFoundWrapper = styled.div`
   height: 100vh;
