@@ -9,14 +9,6 @@
     "website": "https:/dancemagicnj.com/",
     "repository": "https://github.com/maxrbaldwin/Dance-Magic-Web",
     "image": "heroku/nodejs",
-    "env": {
-      "HEROKU_APP_NAME": {
-        "required": true
-      },
-      "HEROKU_PARENT_APP_NAME": {
-        "required": true
-      }
-    },
     "environments": {
       "test": {
         "scripts": {
