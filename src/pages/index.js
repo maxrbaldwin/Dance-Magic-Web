@@ -17,14 +17,14 @@ import {
   InfoHeader
 } from "@styles/InfoContainer"
 
-const heroImage = "https://storage.googleapis.com/dance-magic-images/home/hero.jpg"
-const contactGIF = "https://storage.googleapis.com/dance-magic-images/home/classes.gif"
-const competitiveImage = "https://storage.googleapis.com/dance-magic-images/home/comp.jpg"
-const serviceImage = "https://storage.googleapis.com/dance-magic-images/home/charity.jpg"
+const heroImage = "https://res.cloudinary.com/hyk1rhlzp/image/upload/v1581811327/dance-magic/home/hero_jdeoef.jpg"
+const contactGIF = "https://res.cloudinary.com/hyk1rhlzp/image/upload/v1581811329/dance-magic/home/classes_bpvscc.gif"
+const competitiveImage = "https://res.cloudinary.com/hyk1rhlzp/image/upload/v1581811327/dance-magic/home/comp_rgdjyw.jpg"
+const serviceImage = "https://res.cloudinary.com/hyk1rhlzp/image/upload/v1581811327/dance-magic/home/charity_iqh54a.jpg"
 
-const sarah = "https://storage.googleapis.com/dance-magic-images/thumbs/sarah_thumb.jpg"
-const nick = "https://storage.googleapis.com/dance-magic-images/thumbs/nick_thumb.jpg"
-const bill = "https://storage.googleapis.com/dance-magic-images/thumbs/bill_thumb.jpg"
+const sarah = "https://res.cloudinary.com/hyk1rhlzp/image/upload/v1581811352/dance-magic/thumbs/sarah_thumb_xa1ver.jpg"
+const nick = "https://res.cloudinary.com/hyk1rhlzp/image/upload/v1581811352/dance-magic/thumbs/nick_thumb_h94v5b.jpg"
+const bill = "https://res.cloudinary.com/hyk1rhlzp/image/upload/v1581811352/dance-magic/thumbs/bill_thumb_aaeddk.jpg"
 
 const ContactInfo = styled.section`
   ${infoSection}

@@ -6,7 +6,7 @@ import getHost from "@utils/getHost"
 import axios from "axios"
 
 const host = getHost();
-const loadingImg = "https://storage.googleapis.com/dance-magic-images/dancer.gif";
+const loadingImg = "https://res.cloudinary.com/hyk1rhlzp/image/upload/v1581811368/dance-magic/dancer_n9ycym.gif";
 
 // user message
 const messageDuration = 8000;
