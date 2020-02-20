@@ -1,50 +1,137 @@
-const path = require('path')
-const fs = require('fs')
+const https = require('https')
 
-const rootDir = '../';
-const isProduction = () => process.env.NODE_ENV === 'production';
-const isPrd = isProduction();
-const clientEnvVars = ['API_HOST', 'RECAPTCHA_CLIENT'];
+// required environmental variables
+const currentBranch = process.env.HEROKU_TEST_RUN_BRANCH || 'heroku'
+const apiKey = process.env.HEROKU_API_KEY || '467e7ecc-abca-4a3b-a76d-07d3b76496f2'
 
-async function main() {
-  const env = isPrd ? 'production' : 'development';
-  try {
-    const parsedEnvVars = parseEnvVars(clientEnvVars);
-    await writeEnvFile(parsedEnvVars, env);
-  } catch (err) {
-    console.log(`Error in main: ${err}`);
-  }
-}
+// static variables
+const host = 'api.heroku.com'
+const pipeLineName = 'dance-magic-web'
 
-const parseEnvVars = envVars => {
-  const accumulator = '';
-  const parsedEnvVars = Object.keys(process.env).reduce((acc, key) => {
-    const value = process.env[key]
-    const index = clientEnvVars.indexOf(key)
-    if (index > -1) {
-      acc = `${acc}${key}=${value}\n`;
+// computed values
+const pipeLineApiPath = pln => `/pipelines/${pln}`
+const reviewAppApiPath = pipeLineId => `/pipelines/${pipeLineId}/review-apps`
+const appApiPath = appId => `/apps/${appId}`
+
+const fetchPipeline = () => {
+  const options = {
+    hostname: host,
+    path: pipeLineApiPath(pipeLineName),
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Accept': 'application/vnd.heroku+json; version=3'
     }
-    return acc;
-  }, accumulator);
-  return parsedEnvVars;
-}
+  };
 
-const writeEnvFile = (parsedEnvVars, env) => {
-  const envFilePath = path.join(__dirname, rootDir, `.env.${env}`);
   return new Promise((resolve, reject) => {
-    fs.writeFile(envFilePath, parsedEnvVars, err => {
+    let data = []
+    const req = https.request(options, res => {
+      res.on('data', chunck => {
+        data.push(chunck)
+      });
 
-      if (err) {
-        console.log(err);
-        return reject();
-      }
-  
-      console.log(`Created: ${envFilePath}`);
-      return resolve();
-    }); 
+      res.on('end', () => {
+        const dataToString = data.join('')
+        const dataToJson = JSON.parse(dataToString)
+        resolve(dataToJson)
+      })
+    }).end();
+
+    req.on('error', err => {
+      reject(err)
+    });
+
+    req.end()
   })
 }
 
-Promise.resolve().then(main).catch(err => {
-  console.log(`Error in catch ${err}`);
+const fetchReviewApps = pipeline => {
+  const { id } = pipeline
+  const options = {
+    hostname: host,
+    path: reviewAppApiPath(id),
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Accept': 'application/vnd.heroku+json; version=3'
+    }
+  };
+
+  return new Promise((resolve, reject) => {
+    let data = []
+    const req = https.request(options, res => {
+      res.on('data', chunck => {
+        data.push(chunck)
+      });
+
+      res.on('end', () => {
+        const dataToString = data.join('')
+        const dataToJson = JSON.parse(dataToString)
+        resolve(dataToJson)
+      })
+    }).end();
+
+    req.on('error', err => {
+      reject(err)
+    });
+
+    req.end()
+  })
+}
+
+const getReviewAppIdByBranch = reviewApps => {
+  let reviewAppId
+
+  reviewApps.forEach(reviewApp => {
+    const { branch, app } = reviewApp
+    if (branch === currentBranch) {
+      reviewAppId = app.id
+    }
+  })
+
+  return Promise.resolve(reviewAppId)
+}
+
+const fetchReviewApp = reviewAppId => {
+  const options = {
+    hostname: host,
+    path: appApiPath(reviewAppId),
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Accept': 'application/vnd.heroku+json; version=3'
+    }
+  };
+
+  return new Promise((resolve, reject) => {
+    let data = []
+    const req = https.request(options, res => {
+      res.on('data', chunck => {
+        data.push(chunck)
+      });
+
+      res.on('end', () => {
+        const dataToString = data.join('')
+        const dataToJson = JSON.parse(dataToString)
+        resolve(dataToJson)
+      })
+    }).end();
+
+    req.on('error', err => {
+      reject(err)
+    });
+
+    req.end()
+  })
+}
+
+const setReviewAppEnvVar = reviewApp => {
+  const { web_url } = reviewApp
+
+  process.env.HEROKU_REVIEW_APP_URL = web_url
+}
+
+Promise.resolve().then(fetchPipeline).then(fetchReviewApps).then(getReviewAppIdByBranch).then(fetchReviewApp).then(setReviewAppEnvVar).catch(err => {
+  console.log('err: ', err);
 })
