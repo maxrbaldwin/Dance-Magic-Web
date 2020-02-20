@@ -45,7 +45,7 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "NODE_ENV=production npm run serve",
     "serve": "./node_modules/.bin/gatsby serve --port $PORT --host 0.0.0.0",
-    "test": "env"
+    "test": "node tools/test.js"
   },
   "repository": {
     "type": "git",
