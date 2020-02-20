@@ -12,7 +12,7 @@
     "environments": {
       "test": {
         "scripts": {
-          "test-setup": "env",
+          "test-setup": "npm run test-setup",
           "test": "npm run test"
         }
       }
