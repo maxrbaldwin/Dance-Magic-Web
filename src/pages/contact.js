@@ -92,11 +92,6 @@ const ContactListItem = styled.div`
   ${ContactInfoItemStyles}
   ${ContactListItemStyles}
 `
-const Map = styled.iframe`
-  ${ContactInfoItemStyles}
-  width: 100%;
-  height: 300px;
-`
 const Icon = styled.span`
   padding-right: 10px;
 `

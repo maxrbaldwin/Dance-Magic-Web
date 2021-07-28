@@ -25,9 +25,9 @@ const Footer = () => (
     <MaxWidth>609-561-1414 | 750 S White Horse Pike, Hammonton, NJ, 08037 | <Link to="/policies">Dance Studio Policies</Link></MaxWidth>
     <MaxWidth>
       <TeesAndCees>
-        reCaptcha v3 <a target="_blank" href={recaptchaTerms}>terms</a> |
-        reCaptcha v3 <a target="_blank" href={recaptchaPrivacy}>privacy</a> |
-        <a target="_blank" href={reCaptchaInfo}> reCaptcha v3</a>
+        reCaptcha v3 <a target="_blank" rel="noopener noreferrer" href={recaptchaTerms}>terms</a> |
+        reCaptcha v3 <a target="_blank" rel="noopener noreferrer" href={recaptchaPrivacy}>privacy</a> |
+        <a target="_blank" rel="noopener noreferrer" href={reCaptchaInfo}> reCaptcha v3</a>
       </TeesAndCees>
     </MaxWidth>
   </FooterWrapper>

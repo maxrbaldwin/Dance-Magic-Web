@@ -10,13 +10,13 @@ import padding from "@styles/padding"
 
 const MobileWrapper = styled.div`
   display: none;
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     display: block;
   }
 `
 const DesktopHeaderWrapper = styled.div`
   display: block;
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     display: none;
   }
 `
@@ -63,6 +63,7 @@ const LinkStyles = css`
 const NavItemLink = styled(props => <Link {...props} />)`
   ${LinkStyles}
 `
+// eslint-disable-next-line
 const NavItemAnchor = styled(props => <a {...props} />)`
   ${LinkStyles}
 `
@@ -117,11 +118,11 @@ const DesktopHeader = () => (
               <NavItem>
                 <NavItemLink to="/">Home</NavItemLink>
               </NavItem>
-              {/* <NavItem>
-                <NavItemLink to="/about">About</NavItemLink>
-              </NavItem> */}
               <NavItem>
                 <NavItemLink to="/contact">Contact</NavItemLink>
+              </NavItem>
+              <NavItem>
+                <NavItemLink to="/registration">Registration</NavItemLink>
               </NavItem>
               <NavItem>
                 <NavItemAnchor href={facebookUrl} target="_blank">Join us on Facebook</NavItemAnchor>
@@ -161,6 +162,9 @@ const MobileHeader = () => {
               </MobileNavItem>
               <MobileNavItem>
                 <NavItemLink to="/contact">Contact</NavItemLink>
+              </MobileNavItem>
+              <MobileNavItem>
+                <NavItemLink to="/registration">Registration</NavItemLink>
               </MobileNavItem>
               <MobileNavItem>
                 <NavItemAnchor href={facebookUrl} target="_blank">Join us on Facebook</NavItemAnchor>
