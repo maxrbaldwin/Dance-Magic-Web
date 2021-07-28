@@ -117,11 +117,11 @@ const DesktopHeader = () => (
               <NavItem>
                 <NavItemLink to="/">Home</NavItemLink>
               </NavItem>
-              {/* <NavItem>
-                <NavItemLink to="/about">About</NavItemLink>
-              </NavItem> */}
               <NavItem>
                 <NavItemLink to="/contact">Contact</NavItemLink>
+              </NavItem>
+              <NavItem>
+                <NavItemLink to="/registration">Registration</NavItemLink>
               </NavItem>
               <NavItem>
                 <NavItemAnchor href={facebookUrl} target="_blank">Join us on Facebook</NavItemAnchor>
@@ -161,6 +161,9 @@ const MobileHeader = () => {
               </MobileNavItem>
               <MobileNavItem>
                 <NavItemLink to="/contact">Contact</NavItemLink>
+              </MobileNavItem>
+              <MobileNavItem>
+                <NavItemLink to="/registration">Registration</NavItemLink>
               </MobileNavItem>
               <MobileNavItem>
                 <NavItemAnchor href={facebookUrl} target="_blank">Join us on Facebook</NavItemAnchor>
