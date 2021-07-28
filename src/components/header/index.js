@@ -10,13 +10,13 @@ import padding from "@styles/padding"
 
 const MobileWrapper = styled.div`
   display: none;
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     display: block;
   }
 `
 const DesktopHeaderWrapper = styled.div`
   display: block;
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     display: none;
   }
 `
