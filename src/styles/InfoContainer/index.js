@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import fullScreen from '@styles/fullScreen';
-
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -12,7 +10,7 @@ export const InfoContainer = styled.div`
 
   @media (max-width: 700px) {
     flex-direction: column;
-    width: 100%:
+    width: 100%;
   }
 `;
 export const infoSection = css`
