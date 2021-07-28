@@ -63,6 +63,7 @@ const LinkStyles = css`
 const NavItemLink = styled(props => <Link {...props} />)`
   ${LinkStyles}
 `
+// eslint-disable-next-line
 const NavItemAnchor = styled(props => <a {...props} />)`
   ${LinkStyles}
 `
