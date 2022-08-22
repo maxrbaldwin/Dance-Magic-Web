@@ -5,8 +5,8 @@
   "version": "1.0.0",
   "author": "maxrbaldwin",
   "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6"
+    "node": "16.17.0",
+    "npm": "8.15.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
