@@ -14,7 +14,7 @@ const RegistrationWrapper = styled.div`
   margin-top: 40px;
 `
 
-const iframeSrc = 'https://docs.google.com/forms/d/e/1FAIpQLSf5H5EM7Z6ws-7rUGue_0Bn4AwWWwvV-u_OscaGhZ9EfYxD2w/viewform?embedded=true'
+const iframeSrc = 'https://docs.google.com/forms/d/e/1FAIpQLSeH8cB_A2PZ6srUwvaNuIG6Mhce3bQ8nFXEMsF82kq4X14yEQ/viewform?embedded=true'
 
 const Registration = () => (
   <Layout>
