@@ -23,7 +23,7 @@ const ButtonItemAnchor = styled(props => <Link {...props} />)`
 
 const ContactButton = () => (
   <Button>
-    <ButtonItemAnchor to='/contact'>Get Info</ButtonItemAnchor>
+    <ButtonItemAnchor to='/registration'>Register</ButtonItemAnchor>
   </Button>
 );
 
