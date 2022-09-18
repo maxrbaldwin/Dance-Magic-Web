@@ -116,7 +116,7 @@ const IndexPage = () => (
         <HeroOverlay />
         <MaxWidth>
           <HeroItem>
-            <HeroHeader>36 Years of Dance Achievement</HeroHeader>
+            <HeroHeader>40 Years of Dance Achievement</HeroHeader>
             <HeroText>Join an award winning dance community</HeroText>
             <ContactButton />
           </HeroItem>
